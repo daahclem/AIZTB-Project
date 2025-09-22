@@ -1,0 +1,42 @@
+{
+  "evuser": [
+    {
+      "type": "RBAC",
+      "resources": ["ev_charger_1", "ev_charger_2"],
+      "min_risk": 0.0,
+      "max_risk": 0.5
+    },
+    {
+      "type": "MAC",
+      "resources": ["ev_charger_2"],
+      "min_risk": 0.0,
+      "max_risk": 0.3
+    },
+    {
+      "type": "ABAC",
+      "resources": ["ev_charger_1"],
+      "attributes": {
+        "location": "uk",
+        "device_type": "trusted"
+      },
+      "min_risk": 0.0,
+      "max_risk": 0.4
+    },
+    {
+      "type": "DAC",
+      "resources": ["ev_charger_1"],
+      "owner": "evuser",
+      "shared_with": ["admin"],
+      "min_risk": 0.0,
+      "max_risk": 0.6
+    }
+  ],
+  "admin": [
+    {
+      "type": "RBAC",
+      "resources": ["*"],
+      "min_risk": 0.0,
+      "max_risk": 0.9
+    }
+  ]
+}

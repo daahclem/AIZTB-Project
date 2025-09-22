@@ -1,0 +1,5 @@
+User: evuser001
+Action: LogAccess
+Decision: Approved
+Risk Score: 0.3
+Timestamp: 2025-07-24 22:00

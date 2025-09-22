@@ -1,0 +1,104 @@
+# Simulation Parameter Justification and Evaluation Metrics
+
+## 3. Justification of Key Parameters
+
+### 3.1 Number of Sessions and Simulation Time
+- **Number of Sessions:** N_sessions = 10,000
+- **Simulation Time:** Sessions indexed 1 to 10,000
+
+### 3.2 Role and Policy Type Distributions
+- **Role Probabilities:**
+  - P(User) = 0.70
+  - P(Admin) = 0.15
+  - P(Fleet) = 0.15
+- **Policy Type Probabilities:**
+  - P(RBAC) = 0.50
+  - P(ABAC) = 0.20
+  - P(MAC) = 0.20
+  - P(DAC) = 0.10
+
+### 3.3 Behavior Context and Session Validity
+- **Behavior Context:**
+  - P(Normal) = 0.80
+  - P(Anomalous) = 0.20
+- **Session Validity:**
+  - P(Invalid | Anomalous) = 0.08
+  - P(Invalid | Normal) = 0.008
+
+### 3.4 Time-of-Day and Attack Probability
+- **Time-of-Day Probabilities:**
+  - P(Morning) = 0.25
+  - P(Afternoon) = 0.25
+  - P(Evening) = 0.25
+  - P(Off-hours) = 0.25
+- **Attack Probability Modifier:**
+  - P_attack(off-hours) = 1.6 × P_base
+  - P_attack(evening) = 1.1 × P_base
+  - P_attack(morning) = 0.8 × P_base
+  - P_attack(afternoon) = 0.6 × P_base
+
+### 3.5 Risk Score Modeling
+- **Legitimate:** Risk_legit ~ N(μ_role, σ²), μ_role ∈ [0.26, 0.36], σ = 0.08
+- **Malicious:** Risk_mal ~ N(μ_role, σ²), μ_role ∈ [0.75, 0.86], σ = 0.12
+- **Threshold:** Access Granted if Risk Score < 0.6
+
+### 3.6 Error Rates
+- **False Acceptance Rate (FAR):**
+  - FAR = False Accepts / Total Attacks
+- **False Rejection Rate (FRR):**
+  - FRR = False Rejects / Total Legitimate
+- **With AI:** FAR_AI = 0.03, FRR_AI = 0.03
+- **No AI:**
+  - FAR_User = 0.07, FAR_Admin = 0.13, FAR_Fleet = 0.16
+  - FRR_User = 0.03, FRR_Admin = 0.06, FRR_Fleet = 0.08
+
+### 3.7 Latency and PET
+- **Decision Latency:**
+  - Latency_AI ~ N(180 ms, 25²)
+  - Latency_NoAI ~ N(120 ms, 20²)
+- **PET:**
+  - PET_AI ~ N(80 ms, 15²)
+  - PET_NoAI ~ N(60 ms, 10²)
+
+### 3.8 Blockchain Logging Delay
+- **Blockchain Delay:** Delay ~ N(200 ms, 40²)
+
+---
+
+## 4. Metrics for Evaluation
+
+### 4.1 Access Accuracy
+- Accuracy = (True Positives + True Negatives) / Total Sessions
+
+### 4.2 False Acceptance Rate (FAR) and False Rejection Rate (FRR)
+- FAR = False Accepts / Total Attacks
+- FRR = False Rejects / Total Legitimate
+
+### 4.3 Access Denial Rate (ADR)
+- ADR = Total Denied / Total Sessions
+
+### 4.4 Risk Score Distribution
+- Distribution of AI-assigned risk scores for legitimate and malicious sessions
+
+### 4.5 Policy Type Usage
+- Proportion of sessions by each policy type
+
+### 4.6 Decision Latency and PET
+- Decision Latency: Time from request to decision
+- PET: Policy evaluation time
+
+### 4.7 Blockchain Logging Delay
+- Time to record decision on blockchain
+
+### 4.8 AI Override Frequency
+- % of sessions where AI overrides baseline
+
+### 4.9 Session Validity Ratio
+- Ratio of valid to invalid sessions
+
+### 4.10 Access Decisions by Role and Behavior
+- Acceptance rates by user role and behavior context
+
+---
+
+**All formulas and distributions are written in standard mathematical notation for Word. If you need this as an actual .docx file with Word equation editor objects, please specify and I can generate the file accordingly.**
