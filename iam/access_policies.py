@@ -1,10 +1,7 @@
 # iam/access_policies.py
 
 def check_access_policy(policy_type, role, resource, attributes):
-    """
-    Dummy logic to simulate policy evaluation for RBAC, ABAC, MAC, DAC.
-    Returns "allow" or "deny" based on simple rules.
-    """
+
     if policy_type == "RBAC":
         return "allow" if resource in role.get("resources", []) else "deny"
     
